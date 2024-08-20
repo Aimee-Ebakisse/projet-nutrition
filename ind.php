@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ajouter un Repas</title>
+    <link rel="stylesheet" href="indexb.css">
+</head>
+<body>
+    <div class="container">
+        <h2>Ajouter un Repas</h2>
+        <form id="mealForm" method="post" action="indb.php">
+            <label for="nom">Nom du Repas:</label>
+            <input type="text" id="nom" name="nom" required>
+
+            <label for="description">Description:</label>
+            <textarea id="description" name="description" rows="4" required></textarea>
+
+            <label for="calories">Calories:</label>
+            <input type="number" id="calories" name="calories" required>
+
+            <label for="type">Type de Repas:</label>
+            <select id="type" name="type" required>
+                <option value="petit_dejeuner">Petit Déjeuner</option>
+                <option value="dejeuner">Déjeuner</option>
+                <option value="diner">Dîner</option>
+                <option value="snack">Snack</option>
+            </select>
+
+            <button type="submit">Ajouter le Repas</button>
+        </form>
+        <div id="message"></div>
+        
+        <h2>Liste des Repas</h2>
+        <table id="mealTable">
+            <thead>
+                <tr>
+                    <th>Nom</th>
+                    <th>Description</th>
+                    <th>Calories</th>
+                    <th>Type</th>
+                </tr>
+            </thead>
+            <tbody>
+                <!-- Les repas seront ajoutés ici -->
+            </tbody>
+        </table>
+    </div>
+    <script src="indexb.js"></script>
+</body>
+</html>

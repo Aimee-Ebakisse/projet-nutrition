@@ -1,0 +1,189 @@
+@import url('https://fonts.googleapis.com/css?family=Poppins:200,300,400,500,600,700,800,900&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    font-family: 'Poppins', sans-serif;
+}
+
+body {
+    background-color: #ffffff;
+}
+
+.input_add {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.input_add form {
+    display: flex;
+    flex-direction: column;
+    width: 350px;
+    background-color: #fff; 
+    padding: 20px;
+    box-shadow: 0 0 50px rgba(0, 0, 0, 0.4);
+    border-radius: 6px;  
+}
+
+.input_add form input[type="text"],
+.input_add form input[type="file"],
+.input_add form textarea {
+    border: 1px solid rgba(0, 0, 0, 0.6);
+    border-radius: 6px;
+    outline: 0;
+    padding: 5px;
+    margin-bottom: 10px;
+}
+
+textarea {
+    resize: none;
+}
+
+.btn-liste-prod,.input_add form input[type="submit"] {
+    padding: 5px 8px;
+    border: 0;
+    outline: 0;
+    background-color: #fdad00;
+    color: #fff;
+    border-radius: 6px;
+    font-size: 14px;
+}
+
+.btn-liste-prod{
+    text-decoration: 0;
+    text-align: center;
+    margin-top: 10px ;
+}
+
+/*Page resultats.html*/
+
+.result{
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.result-content{
+    background-color: #fff;
+    width: 40%;
+    border: 6px;
+    padding: 20px;
+    border-radius: 6px;
+    box-shadow: 0 0 50px rgba(0, 0, 0, 0.4);
+}
+
+.result-content a{
+    color: #f3e0bc;
+    text-decoration: 0;
+}
+
+.result-content a:hover{
+    text-decoration: underline;
+}
+
+/**Scroll bar css*/
+::-webkit-scrollbar{
+    width: 8px;
+    height: 5px;
+}
+
+::-webkit-scrollbar-thumb{
+    background-color: #fff;
+}
+
+.result-content h3 {
+    text-align: center;
+    margin-top: 10px;
+    text-transform: uppercase;
+}
+
+.liste-repas{
+    max-height: 400px;
+    overflow: auto;
+}
+
+.repas{
+    margin: 20px 0;
+    height: 100px;
+    display: flex;
+}
+
+.repas .image-rep{
+    height: 100%;
+    width: 100px;
+}
+
+.repas .image-rep img {
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+
+}
+
+.repas .text{
+    margin-left: 15px;
+    overflow: hidden;
+    width: 80%;
+
+}
+
+.repas .text .titre{
+    text-transform: uppercase;
+}
+
+.repas .text .description{
+    color: rgba(0, 0, 0, 0.6);
+    font-size: 16px;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*responsive*/
+@media  (max-width:745px){
+    .result-content{
+        width: 80%;
+    }
+}

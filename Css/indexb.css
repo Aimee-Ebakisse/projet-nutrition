@@ -1,0 +1,146 @@
+@import url('https://fonts.googleapis.com/css?family=Poppins:200,300,400,500,600,700,800,900&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+section {
+    position: relative;
+    width: 100%;
+    min-height: 100vh; /* Utiliser 100vh pour la hauteur de la section */
+    padding: 100px; /* Supprimer le padding pour que le header soit en haut */
+    display: flex;
+    justify-content: space-between;/* Changer pour une disposition en colonne */
+    align-items: center; /* Centrer le contenu horizontalement */
+    background: #fff;
+}
+
+header {
+    position: absolute; /* Changer à 'relative' pour le garder dans le flux */
+    width: 100%;
+    padding: 20px 100px;
+    display: flex;
+    top: 0;
+    left: 0 ;
+    justify-content: space-between;
+    align-items: center;
+}
+
+header .logo {
+    max-width: 100px;
+    position: relative;
+}
+
+header ul {
+    display: flex;
+    /*position: ;*/
+}
+
+header ul li {
+    list-style: none;
+}
+
+header ul li a {
+    display: inline-block;
+    color: #c16c00; /* Couleur du texte */
+    font-weight: 500; /* Poids de la police */
+    margin-left: 40px;
+    text-decoration: none; /* Pas de soulignement */
+    background: white; /* Couleur de fond */
+    border-radius: 40px; /* Coins arrondis */
+    letter-spacing: 1px; /* Espacement des lettres */
+    font-weight: 900;
+    padding: 8px 20px; /* Espacement interne */
+}
+
+
+.content {
+    width: 100%; /* S'assurer que la div content prend toute la largeur */
+    position: relative; 
+    align-items: center;
+    justify-content: space-between;
+    display: flex;/* Ajouter du padding pour le contenu */
+}
+
+.content .textBox{
+    position:relative;
+    max-width: 600px;
+}
+
+.content .textBox h2{
+    color: #333;
+    font-size: 4em;
+    line-height: 1.4em;
+    font-weight: 500;
+}
+.content .textBox h2 span{
+    color:  #c16c00;
+    font-size: 1.2em;
+    font-weight: 900; 
+}
+
+.content .textBox p {
+    color: #333;
+}
+
+.content .textBox a {
+    display: inline-block;
+    margin-top: 20px;
+    padding: 8px 20px;
+    background:  #c16c00;
+    color: #fff;
+    border-radius: 40px;
+    font-weight: 500;
+    letter-spacing: 1px;
+    text-decoration: none;
+
+}
+
+.content .imgBox{
+    width: 600px;
+    display: flex;
+    justify-content: flex-end;
+    padding-right: 50px;
+    margin-top: 50px;
+
+}
+
+.content .imgBox img{
+    max-width: 340px;
+}
+
+.thumb{
+    position: absolute;
+    left: 50%;
+    bottom: 20px;
+    transform: translateX(-50%);
+    display: flex;
+}
+
+.thumb li
+{
+    list-style: none;
+    display: inline-block;
+    margin: 0 20px;
+    cursor: pointer;
+    transition: 0.5s;
+    margin-top: auto;
+
+}
+
+.thumb li:hover{
+    transform: translateY(-15px);
+}
+
+.thumb li img{
+    max-width: 90px;
+
+}
+
+.container py-5 row py-5 col-lg-5 m-auto text-center h1{
+    font-weight: 700;
+}   
+
