@@ -1,161 +1,159 @@
+/* Importation de la police Poppins depuis Google Fonts */
 @import url('https://fonts.googleapis.com/css?family=Poppins:200,300,400,500,600,700,800,900&display=swap');
 
+/* Réinitialisation des marges et des paddings pour tous les éléments */
 * {
     margin: 0;
     padding: 0;
-    box-sizing: border-box;
-    font-family: 'Poppins', sans-serif;
+    box-sizing: border-box; /* Inclut le padding et la bordure dans la largeur totale */
+    font-family: 'Poppins', sans-serif; /* Application de la police Poppins */
 }
 
+/* Styles généraux pour les sections */
 section {
-    position: relative;
-    width: 100%;
-    min-height: 100vh; /* Utiliser 100vh pour la hauteur de la section */
-    padding: 100px; /* Supprimer le padding pour que le header soit en haut */
-    display: flex;
-    justify-content: space-between;/* Changer pour une disposition en colonne */
-    align-items: center; /* Centrer le contenu horizontalement */
-    background: #fff;
+    position: relative; /* Position relative pour le placement des éléments enfants */
+    width: 100%; /* Largeur de la section */
+    min-height: 100vh; /* Hauteur minimale de la section */
+    padding: 100px; /* Padding autour de la section */
+    display: flex; /* Utilisation de flexbox pour la disposition */
+    justify-content: space-between; /* Espacement des éléments enfants */
+    align-items: center; /* Centrer le contenu verticalement */
+    background: #fff; /* Couleur de fond blanche */
 }
 
+/* Styles pour l'en-tête */
 header {
-    position: absolute; /* Changer à 'relative' pour le garder dans le flux */
-    width: 100%;
-    padding: 20px 100px;
-    display: flex;
-    top: 0;
-    left: 0 ;
-    justify-content: space-between;
-    align-items: center;
+    position: absolute; /* Position absolue pour le garder en haut */
+    width: 100%; /* Largeur de l'en-tête */
+    padding: 20px 100px; /* Espacement à l'intérieur de l'en-tête */
+    display: flex; /* Utilisation de flexbox pour la disposition */
+    top: 0; /* Positionné en haut */
+    left: 0; /* Aligné à gauche */
+    justify-content: space-between; /* Espacement des éléments enfants */
+    align-items: center; /* Centrer le contenu verticalement */
 }
 
+/* Styles pour le logo dans l'en-tête */
+header .logo {
+    max-width: 100px; /* Largeur maximale du logo */
+    position: relative; /* Position relative pour le logo */
+}
 
-
+/* Styles pour la liste de navigation dans l'en-tête */
 header ul {
-    display: flex;
-    /*position: ;*/
+    display: flex; /* Utilisation de flexbox pour la liste */
 }
 
 header ul li {
-    list-style: none;
+    list-style: none; /* Supprime les puces de la liste */
 }
 
+/* Styles pour les liens de navigation */
 header ul li a {
-    display: inline-block;
+    display: inline-block; /* Affichage en bloc pour permettre le padding */
     color: #b73816; /* Couleur du texte */
     font-weight: 500; /* Poids de la police */
-    margin-left: 40px;
+    margin-left: 40px; /* Marge à gauche entre les liens */
     text-decoration: none; /* Pas de soulignement */
     background: white; /* Couleur de fond */
     border-radius: 40px; /* Coins arrondis */
     letter-spacing: 1px; /* Espacement des lettres */
-    font-weight: 900;
-    padding: 8px 20px; /* Espacement interne */
+    font-weight: 900; /* Poids de la police */
+    padding: 8px 20px; /* Espacement interne des liens */
 }
 
-
+/* Styles pour le contenu principal */
 .content {
-    width: 100%; /* S'assurer que la div content prend toute la largeur */
-    position: relative; 
-    align-items: center;
-    justify-content: space-between;
-    display: flex;/* Ajouter du padding pour le contenu */
+    width: 100%; /* Prend toute la largeur */
+    position: relative; /* Position relative pour le placement des éléments enfants */
+    align-items: center; /* Centre les éléments verticalement */
+    justify-content: space-between; /* Espacement des éléments enfants */
+    display: flex; /* Utilisation de flexbox pour la disposition */
 }
 
-.content .textBox{
-    position:relative;
-    max-width: 600px;
+/* Styles pour la boîte de texte dans le contenu */
+.content .textBox {
+    position: relative; /* Position relative pour le texte */
+    max-width: 600px; /* Largeur maximale de la boîte de texte */
 }
 
-.content .textBox h2{
-    color: #333;
-    font-size: 4em;
-    line-height: 1.4em;
-    font-weight: 500;
-}
-.content .textBox h2 span{
-    color:  #b73816;
-    font-size: 1.2em;
-    font-weight: 900; 
+/* Styles pour le titre dans la boîte de texte */
+.content .textBox h2 {
+    color: #333; /* Couleur du texte */
+    font-size: 4em; /* Taille de la police */
+    line-height: 1.4em; /* Hauteur de ligne */
+    font-weight: 500; /* Poids de la police */
 }
 
+/* Styles pour le texte en surbrillance dans le titre */
+.content .textBox h2 span {
+    color: #b73816; /* Couleur du texte en surbrillance */
+    font-size: 1.2em; /* Taille de la police */
+    font-weight: 900; /* Poids de la police */
+}
+
+/* Styles pour le paragraphe dans la boîte de texte */
 .content .textBox p {
-    color: #333;
+    color: #333; /* Couleur du texte */
 }
 
+/* Styles pour le lien dans la boîte de texte */
 .content .textBox a {
-    display: inline-block;
-    margin-top: 20px;
-    padding: 8px 20px;
-    background:  #b73816;
-    color: #fff;
-    border-radius: 40px;
-    font-weight: 500;
-    letter-spacing: 1px;
-    text-decoration: none;
-
+    display: inline-block; /* Affichage en bloc pour permettre le padding */
+    margin-top: 20px; /* Marge au-dessus du lien */
+    padding: 8px 20px; /* Espacement interne du lien */
+    background: #b73816; /* Couleur de fond */
+    color: #fff; /* Couleur du texte */
+    border-radius: 40px; /* Coins arrondis */
+    font-weight: 500; /* Poids de la police */
+    letter-spacing: 1px; /* Espacement des lettres */
+    text-decoration: none; /* Pas de soulignement */
 }
 
-.content .imgBox{
-    width: 600px;
-    display: flex;
-    justify-content: flex-end;
-    padding-right: 50px;
-    margin-top: 50px;
-
+/* Styles pour la boîte d'image dans le contenu */
+.content .imgBox {
+    width: 600px; /* Largeur de la boîte d'image */
+    display: flex; /* Utilisation de flexbox pour la disposition */
+    justify-content: flex-end; /* Aligne l'image à droite */
+    padding-right: 50px; /* Espacement à droite */
+    margin-top: 50px; /* Marge au-dessus de la boîte d'image */
 }
 
-.content .imgBox img{
-    max-width: 340px;
+/* Styles pour l'image dans la boîte d'image */
+.content .imgBox img {
+    max-width: 340px; /* Largeur maximale de l'image */
 }
 
-.thumb{
-    position: absolute;
-    left: 50%;
-    bottom: 20px;
-    transform: translateX(-50%);
-    display: flex;
+/* Styles pour la liste des vignettes */
+.thumb {
+    position: absolute; /* Position absolue pour la liste des vignettes */
+    left: 50%; /* Centré horizontalement */
+    bottom: 20px; /* Positionné en bas */
+    transform: translateX(-50%); /* Ajuste le centrage */
+    display: flex; /* Utilisation de flexbox pour la disposition */
 }
 
-.thumb li
-{
-    list-style: none;
-    display: inline-block;
-    margin: 0 20px;
-    cursor: pointer;
-    transition: 0.5s;
-    margin-top: auto;
-
+/* Styles pour les éléments de la liste des vignettes */
+.thumb li {
+    list-style: none; /* Supprime les puces de la liste */
+    display: inline-block; /* Affichage en ligne */
+    margin: 0 20px; /* Marge à gauche et à droite */
+    cursor: pointer; /* Change le curseur pour indiquer que l'élément est cliquable */
+    transition: 0.5s; /* Transition pour les effets d'animation */
+    margin-top: auto; /* Permet d'aligner les éléments en bas */
 }
 
-.thumb li:hover{
-    transform: translateY(-15px);
+/* Effet de survol pour les vignettes */
+.thumb li:hover {
+    transform: translateY(-15px); /* Déplace l'élément vers le haut au survol */
 }
 
-.thumb li img{
-    max-width: 90px;
-
+/* Styles pour les images dans la liste des vignettes */
+.thumb li img {
+    max-width: 90px; /* Largeur maximale des vignettes */
 }
 
-.container py-5 row py-5 col-lg-5 m-auto text-center h1{
-    font-weight: 700;
+/* Styles pour le conteneur de produits tendance */
+.container py-5 row py-5 col-lg-5 m-auto text-center h1 {
+    font-weight: 700; /* Poids de la police pour le titre */
 }   
-
-
-.pagination {
-    margin: 20px 0;
-    text-align: center;
-}
-
-.pagination a {
-    margin: 0 5px;
-    padding: 8px 16px;
-    border: 1px solid #ccc;
-    text-decoration: none;
-    color: black;
-}
-
-.pagination a.active {
-    background-color: #017143;
-    color: white;
-}

@@ -1,166 +1,86 @@
 <?php
-session_start(); // Assurez-vous que la session est démarrée
+session_start(); // Démarre la session pour gérer les données de session
 
-// Connexion à la base de données
-$host = 'localhost';
-$dbname = 'projet conception';
-$username = 'root';
-$password = '';
+// Informations de connexion à la base de données
+$host = 'localhost'; // Hôte de la base de données
+$dbname = 'projet conception'; // Nom de la base de données (sans espaces)
+$username = 'root'; // Nom d'utilisateur pour la base de données
+$password = ''; // Mot de passe pour la base de données
 
 try {
+    // Connexion à la base de données avec PDO
     $con = new PDO("mysql:host=$host;dbname=$dbname;charset=utf8", $username, $password);
-    $con->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+    $con->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION); // Gestion des erreurs
 
     // Pagination
-    $limit = 6; // Nombre d'images par page
-    $page = isset($_GET['page']) ? (int)$_GET['page'] : 1;
-    $offset = ($page - 1) * $limit;
+    $limit = 6; // Nombre d'images à afficher par page
+    $page = isset($_GET['page']) ? (int)$_GET['page'] : 1; // Récupère le numéro de page à partir de l'URL (par défaut 1)
+    $offset = ($page - 1) * $limit; // Calcul de l'offset pour la requête SQL
 
-    // Récupérer les repas depuis la base de données
+    // Récupérer les repas depuis la base de données avec pagination
     $stmt = $con->prepare("SELECT * FROM repas LIMIT :limit OFFSET :offset");
-    $stmt->bindParam(':limit', $limit, PDO::PARAM_INT);
-    $stmt->bindParam(':offset', $offset, PDO::PARAM_INT);
-    $stmt->execute();
-    $repas = $stmt->fetchAll(PDO::FETCH_ASSOC);
+    $stmt->bindParam(':limit', $limit, PDO::PARAM_INT); // Lier la limite
+    $stmt->bindParam(':offset', $offset, PDO::PARAM_INT); // Lier l'offset
+    $stmt->execute(); // Exécute la requête
+    $repas = $stmt->fetchAll(PDO::FETCH_ASSOC); // Récupère tous les résultats sous forme de tableau associatif
 
-    // Compter le nombre total de repas
+    // Compter le nombre total de repas dans la base de données
     $countStmt = $con->query("SELECT COUNT(*) FROM repas");
-    $totalCount = $countStmt->fetchColumn();
-    $totalPages = ceil($totalCount / $limit);
+    $totalCount = $countStmt->fetchColumn(); // Récupère le nombre total de repas
+    $totalPages = ceil($totalCount / $limit); // Calcule le nombre total de pages
 } catch (PDOException $e) {
-    echo "Erreur de connexion : " . $e->getMessage();
+    // Affiche un message d'erreur en cas de problème de connexion
+    die("Erreur de connexion : " . $e->getMessage());
 }
 ?>
-
-
 
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Bienvenue dans mon application</title>
-    <link rel="stylesheet" href="Css/indexb.css">
-
-    <style>
-        body {
-            margin: 0;
-            font-family: Arial, sans-serif;
-        }
-
-        /* Style de la navbar */
-        nav {
-            background-color: #333;
-            padding: 10px 20px;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            position: sticky;
-            top: 0;
-            z-index: 1000;
-            width: 200vh;
-        }
-
-        /* Style du logo */
-        nav .logo {
-            max-height: 50px;
-            height: auto;
-        }
-
-        /* Style des liens de la navbar */
-        nav ul {
-            list-style-type: none;
-            margin: 0;
-            padding: 0;
-            display: flex;
-            color: #b73816;
-            align-items: center;
-        }
-
-        nav ul li {
-            margin: 0 15px;
-        }
-
-        nav ul li a {
-            color: white;
-            text-decoration: none;
-            font-size: 16px;
-            padding: 8px 12px;
-            border-radius: 4px;
-            transition: background-color 0.3s ease;
-        }
-
-        nav ul li a:hover {
-            background-color: #555;
-        }
-
-        /* Style pour la réactivité (responsive) */
-        @media (max-width: 768px) {
-            nav ul {
-                flex-direction: column;
-                display: none;
-                width: 100%;
-                background-color: #333;
-            }
-
-            nav ul.active {
-                display: flex;
-            }
-
-            nav ul li {
-                text-align: center;
-                margin: 10px 0;
-            }
-
-            nav .menu-toggle {
-                display: block;
-                cursor: pointer;
-                font-size: 28px;
-                color: white;
-            }
-        }
-    </style>
+    <meta charset="UTF-8"> <!-- Définit le jeu de caractères -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- Responsive design -->
+    <title>Bienvenue dans mon application</title> <!-- Titre de la page -->
+    <link rel="stylesheet" href="Css/indexb.css"> <!-- Lien vers la feuille de style CSS -->
 </head>
-
-
-
-
 <body>
     <section>
+        <!-- En-tête de l'application -->
         <header>
-        <nav>
-        <a href="#"><img src="img/15.jpg" class="logo" alt="Logo"></a>
-        <div class="menu-toggle">&#9776;</div>
-        <ul>
-            <li><a href="#">Accueil</a></li>
-            <li><a href="#">Menu</a></li>
-            <li><a href="#">À propos</a></li>
-            <li><a href="#">Contact</a></li>
-        </ul>
-    </nav>
-
+            <a href="#"><img src="img/15.jpg" class="logo" alt="Logo"></a> <!-- Logo de l'application -->
+            <ul>
+                <li><a href="#">Accueil</a></li> <!-- Lien vers la page d'accueil -->
+                <li><a href="#">Menu</a></li> <!-- Lien vers le menu -->
+                <li><a href="#">À propos</a></li> <!-- Lien vers la page à propos -->
+                <li><a href="#">Contact</a></li> <!-- Lien vers la page de contact -->
+            </ul>
         </header>
+
+        <!-- Contenu principal -->
         <div class="content">
             <div class="textBox">
-                <h2>Bienvenue<br><span>dans l'univers</span></h2>
-                <p>qui changera votre santé nutritionnelle.</p>
-                <a href="#">suivant</a>
+                <h2>Bienvenue<br><span>dans l'univers</span></h2> <!-- Titre de bienvenue -->
+                <p>qui changera votre santé nutritionnelle.</p> <!-- Description -->
+                <a href="#">suivant</a> <!-- Lien pour passer à la page suivante -->
             </div>
         </div>
+
+        <!-- Image principale -->
         <div class="imgBox">
-            <img id="startbucks" src="img/14.jpg" alt="Image de Starbucks">
-        </div>
+            <img id="startbucks" src="img/14.jpg" alt="Image de Starbucks"> <!-- Image principale -->
+         </div> 
+
+        <!-- Vignettes des repas -->
         <ul class="thumb">
-            <?php if (!empty($repas)): ?>
-                <?php foreach ($repas as $repas_item): ?>
+            <?php if (!empty($repas)): ?> <!-- Vérifie si des repas sont disponibles -->
+                <?php foreach ($repas as $repas_item): ?> <!-- Parcourt chaque repas -->
                     <li>
                         <img src="uploads/<?php echo htmlspecialchars($repas_item['image']); ?>" 
                              alt="<?php echo htmlspecialchars($repas_item['titre']); ?>" 
-                             onclick="imgSlider('uploads/<?php echo htmlspecialchars($repas_item['image']); ?>');">
+                             onclick="imgSlider('uploads/<?php echo htmlspecialchars($repas_item['image']); ?>');"> <!-- Image du repas -->
                     </li>
                 <?php endforeach; ?>
             <?php else: ?>
-                <p>Aucun repas trouvé.</p>
+                <p>Aucun repas trouvé.</p> <!-- Message si aucun repas n'est trouvé -->
             <?php endif; ?>
         </ul>
     </section>
@@ -169,8 +89,8 @@ try {
         <div class="container py-5">
             <div class="row py-5 ">
                 <div class="col-lg-5 m-auto text-center">
-                    <h1>What's Trending</h1>
-                    <h6 style="color: red;">Be Healthy Organic Food</h6>
+                    <h1>What's Trending</h1> <!-- Titre pour les produits tendance -->
+                    <h6 style="color: red;">Be Healthy Organic Food</h6> <!-- Sous-titre -->
                 </div>
             </div>
             <div class="row">
@@ -182,21 +102,10 @@ try {
     </section>
 
     <script type="text/javascript">
+        // Fonction pour changer l'image principale
         function imgSlider(anything) {
-            document.getElementById('startbucks').src = anything;
-        }
-        function changeCircleColor(color) {
-            const circle = document.querySelector('.circle');
-            circle.style.background = color;
+            document.getElementById('startbucks').src = anything; // Change la source de l'image
         }
     </script>
-     <script>
-        // JavaScript pour le menu responsive
-        document.querySelector('.menu-toggle').addEventListener('click', function() {
-            document.querySelector('nav ul').classList.toggle('active');
-        });
-    </script>
-
-
 </body>
 </html>
